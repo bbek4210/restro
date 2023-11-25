@@ -1,5 +1,7 @@
+
 import React from 'react';
 import Restro from './components/basics/Restro';
+
 
 const page = () => {
   return <Restro/>;
@@ -8,3 +10,4 @@ const page = () => {
 };
 
 export default page;
+

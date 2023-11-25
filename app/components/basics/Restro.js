@@ -1,11 +1,15 @@
-import React from 'react'
+"use client";
+import React,{ useState} from 'react'
+import Menu from "./menuApi.js";
+import MenuCard from "./MenuCard.js";
 
 const Restro = () => {
-  return (
-    <>
-    <h1>Damii-Damii-Resturant</h1>
+ const[menuData, setMenuData] =useState(Menu);
+ 
+  return <> 
+  <MenuCard menuData={menuData} />
     </>
-  );
+  
 };
 
 export default Restro;
