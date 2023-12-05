@@ -1,35 +1,40 @@
 "use client";
-import React,{ useState} from 'react'
+import React, { useState } from "react";
 import Menu from "./menuApi.js";
 import MenuCard from "./MenuCard.js";
-import navbar from './navbar.js';
+import Navbar from "./Navbar";
 
-const newList = [...new Set(Menu.map((curElem)=>{
-  return curElem.category
-  
-
-
-}))]
-
+const newList = [
+  ...new Set(
+    Menu.map((curElem) => {
+      return curElem.category;
+    })
+  ),
+  "All",
+];
 
 const Restro = () => {
- const[menuData, setMenuData] =useState(Menu);
+  const [menuData, setMenuData] = useState(Menu);
+  const [menuList, setMenuList] = useState(newList);
 
- const filterItem =(category)=>{
-  const updatedList =Menu.filter ((curElem)=>{
-    return curElem.category===category;
-  })
-  setMenuData(updatedList)
- }
- 
-  return <> 
+  const filterItem = (category) => {
+    if (category === "All") {
+      setMenuData(Menu);
+      return;
+    }
 
+    const updatedList = Menu.filter((curElem) => {
+      return curElem.category === category;
+    });
+    setMenuData(updatedList);
+  };
 
-
-
-  <MenuCard menuData={menuData} />
-    </>
-  
+  return (
+    <div className="flex">
+      <Navbar filterItem={filterItem} menuList={menuList} />
+      <MenuCard menuData={menuData} />
+    </div>
+  );
 };
 
 export default Restro;
