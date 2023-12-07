@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState, Effect } from "react";
 import style from "./style.css";
-import { useState } from "react";
 
 /**
  * hooks cannot return jsx normally, if so they need to be called as components
  * @returns
  */
-const HomeRestro = () => {
+const useEffect = () => {
   const [myNum, setMyNum] = useState(0);
+
+  useEffect(() => {
+    document.title = `Chats (${myNum})`;
+  });
+
   return (
     <>
       {/* <div className="center_div"> */}
@@ -24,19 +28,8 @@ const HomeRestro = () => {
         <span></span>
         INCR
       </div>
-      <div
-        class="button2"
-        onClick={() => (myNum > 0 ? setMyNum(myNum - 1) : setMyNum(0))}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        DECR{" "}
-      </div>
-      {/* </div> */}
     </>
   );
 };
 
-export default HomeRestro;
+export default useEffect;
