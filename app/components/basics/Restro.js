@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Menu from "./menuApi.js";
 import MenuCard from "./MenuCard.js";
-import Navbar from "./Navbar";
+import Navbar from "./navbar.js";
 
 const newList = [
   ...new Set(
@@ -30,7 +30,7 @@ const Restro = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-column ">
       <Navbar filterItem={filterItem} menuList={menuList} />
       <MenuCard menuData={menuData} />
     </div>
